@@ -17,12 +17,13 @@ export default class PathfindingVisuablizer extends Component {
            }
             nodes.push(currentRow)
         }
+        
         this.setState({nodes})
     }
 
     render(){
         const {nodes} = this.state;
-        console.log(nodes)
+        
         return (
             <>
                 <h1>Path Finder</h1>
@@ -32,7 +33,8 @@ export default class PathfindingVisuablizer extends Component {
                     <div className="nodes" key={idx}>
                         {row.map((node, nodeIdx) => {
                         
-                        return <Node key={nodeIdx}></Node>})}
+                        return <Node key={nodeIdx}>{node}</Node>})
+                        }
                     </div>
                     )
                 })}

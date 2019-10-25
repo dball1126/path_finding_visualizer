@@ -6,8 +6,9 @@ export default class Node extends Component {
         this.state = {}
     }
     render(){
-        return <div>
-            
-        </div>
+        return (
+        <div className="actual-node">
+
+        </div>)
     }
 }

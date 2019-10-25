@@ -28,7 +28,15 @@
 }
 
 .nodes {
-  background-color: blue;
-  width: 10px;
-  height: 10px;
+  /* background-color: blue; */
+  /* width: 10px;
+  height: 10px; */
+}
+
+.actual-node{
+  width:20px;
+  height:20px;
+  background-color: red;
+  padding-bottom:1px;
+  border: 1px solid black;
 }
