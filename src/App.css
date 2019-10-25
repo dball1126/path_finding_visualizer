@@ -30,16 +30,17 @@
   display: flex;
 }
 
-.nodes {
-  /* background-color: blue; */
-  /* width: 10px;
-  height: 10px; */
-}
-
-.actual-node{
+.actual-node {
   width:20px;
   height:20px;
   background-color: pink;
   padding-bottom:1px;
   border: 1px solid black;
+}
+
+.actual-node.node-start{
+ background-color: green;
+}
+.actual-node.node-end{
+ background-color: black;
 }
