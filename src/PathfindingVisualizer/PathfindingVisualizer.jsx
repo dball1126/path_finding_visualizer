@@ -9,10 +9,11 @@ export default class PathfindingVisuablizer extends Component {
 
     componentDidMount(){
         const nodes = [];
-        for (let row = 0; row < 50; row++) {
+        for (let row = 0; row < 20; row++) {
            const currentRow = [];
            for (let col = 0; col < 50; col++) {
-               currentRow.push([])
+               const currentNode = {row, col}
+               currentRow.push(currentNode)
            }
             nodes.push(currentRow)
         }
@@ -23,15 +24,21 @@ export default class PathfindingVisuablizer extends Component {
         const {nodes} = this.state;
         console.log(nodes)
         return (
-            <div className="grid">
+            <>
                 <h1>Path Finder</h1>
+            <div className="grid">
                 {nodes.map((row, idx) => {
-                    return <div className="nodes">
-                        {row.map((node, nodeIdx) => <Node></Node>)}
+                    return (
+                    <div className="nodes" key={idx}>
+                        {row.map((node, nodeIdx) => {
+                        
+                        return <Node key={nodeIdx}></Node>})}
                     </div>
+                    )
                 })}
                 
             </div>
+            </>
         )
     }
 }

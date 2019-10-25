@@ -23,9 +23,12 @@
 
 
 .grid {
-  background-color: red;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .nodes {
   background-color: blue;
+  width: 10px;
+  height: 10px;
 }
