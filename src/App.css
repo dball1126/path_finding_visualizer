@@ -21,10 +21,13 @@
   color: #09d3ac;
 }
 
+.grid-box{
+    display: flex;
+    justify-content: center;
+}
 
 .grid {
   display: flex;
-  justify-content: space-evenly;
 }
 
 .nodes {

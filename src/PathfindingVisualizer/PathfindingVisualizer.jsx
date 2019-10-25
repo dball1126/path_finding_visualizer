@@ -9,9 +9,9 @@ export default class PathfindingVisuablizer extends Component {
 
     componentDidMount(){
         const nodes = [];
-        for (let row = 0; row < 20; row++) {
+        for (let row = 0; row < 40; row++) {
            const currentRow = [];
-           for (let col = 0; col < 50; col++) {
+           for (let col = 0; col < 30; col++) {
                const currentNode = {row, col}
                currentRow.push(currentNode)
            }
@@ -27,6 +27,7 @@ export default class PathfindingVisuablizer extends Component {
         return (
             <>
                 <h1>Path Finder</h1>
+                <div className="grid-box">
             <div className="grid">
                 {nodes.map((row, idx) => {
                     return (
@@ -40,6 +41,7 @@ export default class PathfindingVisuablizer extends Component {
                 })}
                 
             </div>
+                </div>
             </>
         )
     }
