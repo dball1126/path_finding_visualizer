@@ -30,11 +30,15 @@ export default class PathfindingVisuablizer extends Component {
                 <div className="grid-box">
             <div className="grid">
                 {nodes.map((row, idx) => {
+                    
                     return (
                     <div className="nodes" key={idx}>
                         {row.map((node, nodeIdx) => {
-                        
-                        return <Node key={nodeIdx} ></Node>})
+                       const {row, col} = node;
+                        return <Node key={nodeIdx} 
+                                     row={row}
+                                     col={col}
+                                />})
                         }
                     </div>
                     )
