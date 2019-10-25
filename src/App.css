@@ -28,19 +28,20 @@
 
 .grid {
   display: flex;
+  border: 20px solid black;
 }
 
 .actual-node {
   width:20px;
   height:20px;
-  background-color: pink;
+  background-color: #FFFFFF;
   padding-bottom:1px;
-  border: 1px solid black;
+  border: 1px solid #00c9ff;
 }
 
 .actual-node.node-start{
  background-color: green;
 }
 .actual-node.node-end{
- background-color: black;
+ background-color: red;
 }
