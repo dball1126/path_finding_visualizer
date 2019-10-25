@@ -34,7 +34,7 @@ export default class PathfindingVisuablizer extends Component {
                     <div className="nodes" key={idx}>
                         {row.map((node, nodeIdx) => {
                         
-                        return <Node key={nodeIdx}>{node}</Node>})
+                        return <Node key={nodeIdx} ></Node>})
                         }
                     </div>
                     )

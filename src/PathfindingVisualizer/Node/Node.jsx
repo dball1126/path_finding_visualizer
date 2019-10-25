@@ -6,9 +6,10 @@ export default class Node extends Component {
         this.state = {}
     }
     render(){
+        debugger
         return (
         <div className="actual-node">
-
+           
         </div>)
     }
 }
