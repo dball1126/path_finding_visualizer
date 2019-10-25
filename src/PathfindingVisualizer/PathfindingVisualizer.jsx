@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import Node from './Node/Node';
 
 export default class PathfindingVisuablizer extends Component {
     constructor(props){
@@ -10,6 +10,7 @@ export default class PathfindingVisuablizer extends Component {
         return (
             <div>
                 Path Finder
+                <Node></Node>
             </div>
         )
     }
