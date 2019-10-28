@@ -15,7 +15,10 @@ export default class PathfindingVisuablizer extends Component {
                const currentNode = {row, 
                                     col,
                                     start: row === 10 && col === 10,
-                                    end: row === 30 && col === 25}
+                                    end: row === 30 && col === 25,
+                                    distance: Infinity,
+                                    visited: false,
+                                    previous: null}
 
                currentRow.push(currentNode)
            }
@@ -25,9 +28,25 @@ export default class PathfindingVisuablizer extends Component {
         this.setState({nodes})
     }
 
+    getAllNodes(nodes) {
+        debugger
+        if(nodes.length > 0){
+
+            const newNodes = [];
+            for (let row = 0; row < 40; row++) {
+                const currentRow = [];
+                for (let col = 0; col < 30; col++) {
+                    newNodes.push(nodes[row][col]);
+                }
+            }
+            return nodes;
+        }
+}
+
+
     render(){
         const {nodes} = this.state;
-        
+        console.log(this.getAllNodes(nodes));
         return (
             <>
                 <h1>Path Finder</h1>
