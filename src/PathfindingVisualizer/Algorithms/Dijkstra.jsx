@@ -48,8 +48,11 @@ function getUnvisitedNeighBors(node, nodes){
 
 function updateVisitedNeighbors(node, nodes){
     const unvisited = getUnvisitedNeighBors(node, nodes);
-    for (ele in nodes) {
-        ele.distance = node.distance + 1;
-        ele.previous = node;
+    for (let row = 0; row < 40; row++) {
+        for (let col = 0; col < 30; col++) {
+            let ele = nodes[row][col];
+            ele.distance = node.distance + 1;
+            ele.previous = node;
+        }
     }
 }

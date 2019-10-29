@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Node from './Node/Node';
-
+import {dijkstra} from './Algorithms/Dijkstra';
 export default class PathfindingVisuablizer extends Component {
     constructor(props){
         super(props);
@@ -27,6 +27,12 @@ export default class PathfindingVisuablizer extends Component {
         
         this.setState({nodes})
     }
+    dijkstra(){
+        const {nodes} = this.state;
+        const start = nodes[10][10];
+        const end = nodes[30][25];
+        const visited = dijkstra(nodes, start, end);
+    }
 
     getAllNodes(nodes) {
         debugger
@@ -50,6 +56,7 @@ export default class PathfindingVisuablizer extends Component {
         return (
             <>
                 <h1>Path Finder</h1>
+                <button onClick={() => this.dijkstra()}>Visualize Dijkstra's Algorithm</button>
                 <div className="grid-box">
             <div className="grid">
                 {nodes.map((row, idx) => {
