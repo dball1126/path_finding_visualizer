@@ -42,14 +42,14 @@ export default class PathfindingVisuablizer extends Component {
         const end = nodes[30][25];
         const visitedNodes = dijkstra(nodes, start, end);
         const nodesInShortestPath = getNodesInShortestPath(end);
-        debugger
+        
         this.animate(visitedNodes, nodesInShortestPath);
     }
 
     animate(visited, nodesInShortestPath) {
         for (let i = 0; i < visited.length; i++) {
-            if (i === visited.length) {
-                debugger
+            if (i === visited.length-1) {
+                
                 setTimeout(() => {
                     this.shortestPath(nodesInShortestPath);
                 }, 10 * i);
@@ -65,11 +65,12 @@ export default class PathfindingVisuablizer extends Component {
 
     shortestPath(nodesInShortestPath){
         for (let i = 0; i < nodesInShortestPath.length; i++) {
+            
             setTimeout(() => {
                 const node = nodesInShortestPath[i];
                 document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-shortest-path';
             }, 50 * i);
-            debugger
+            
         }
     }
 
