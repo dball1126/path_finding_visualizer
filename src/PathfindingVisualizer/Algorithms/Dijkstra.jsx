@@ -6,7 +6,8 @@ export const dijkstra = (nodes, start, end) => {
 
    while (unvisited.length > 0){
     sortNodesDistance(unvisited);
-        let closest = unvisited.shift();
+    debugger
+        let closest = unvisited.shift()[0];
         
         if (closest.distance === Infinity) return visited;
         
@@ -14,7 +15,7 @@ export const dijkstra = (nodes, start, end) => {
         visited.push(closest);
 
         if (closest.distance === end.distance) return visited;
-
+    debugger
         updateVisitedNeighbors(closest, nodes);
     }
 }   
@@ -48,9 +49,10 @@ function getUnvisitedNeighBors(node, nodes){
 
 function updateVisitedNeighbors(node, nodes){
     const unvisited = getUnvisitedNeighBors(node, nodes);
+    debugger
     for (let row = 0; row < 40; row++) {
         for (let col = 0; col < 30; col++) {
-            let ele = nodes[row][col];
+            let ele = unvisited[row][col];
             ele.distance = node.distance + 1;
             ele.previous = node;
         }

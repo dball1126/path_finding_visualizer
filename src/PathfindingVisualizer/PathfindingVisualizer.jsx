@@ -27,11 +27,19 @@ export default class PathfindingVisuablizer extends Component {
         
         this.setState({nodes})
     }
-    dijkstra(){
+
+    dijkstraButton(){
         const {nodes} = this.state;
         const start = nodes[10][10];
         const end = nodes[30][25];
         const visited = dijkstra(nodes, start, end);
+    }
+
+    visualize(){
+        const {nodes} = this.state;
+        const start = nodes[10][10];
+        const end = nodes[30][25];
+        dijkstra(nodes, start, end);
     }
 
     getAllNodes(nodes) {
@@ -56,7 +64,7 @@ export default class PathfindingVisuablizer extends Component {
         return (
             <>
                 <h1>Path Finder</h1>
-                <button onClick={() => this.dijkstra()}>Visualize Dijkstra's Algorithm</button>
+                <button onClick={() => this.dijkstraButton()}>Visualize Dijkstra's Algorithm</button>
                 <div className="grid-box">
             <div className="grid">
                 {nodes.map((row, idx) => {
