@@ -19,9 +19,10 @@ export default class PathfindingVisuablizer extends Component {
                                     distance: Infinity,
                                     visited: false,
                                     previous: null}
-
+                
                currentRow.push(currentNode)
            }
+           
             nodes.push(currentRow)
         }
         
@@ -41,16 +42,18 @@ export default class PathfindingVisuablizer extends Component {
         const end = nodes[30][25];
         const visitedNodes = dijkstra(nodes, start, end);
         const nodesInShortestPath = getNodesInShortestPath(end);
+        debugger
         this.animate(visitedNodes, nodesInShortestPath);
     }
 
     animate(visited, nodesInShortestPath) {
         for (let i = 0; i < visited.length; i++) {
             if (i === visited.length) {
-
+                debugger
                 setTimeout(() => {
                     this.shortestPath(nodesInShortestPath);
                 }, 10 * i);
+                
                 return;            
             }
             setTimeout(() => {
@@ -66,11 +69,12 @@ export default class PathfindingVisuablizer extends Component {
                 const node = nodesInShortestPath[i];
                 document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-shortest-path';
             }, 50 * i);
+            debugger
         }
     }
 
     getAllNodes(nodes) {
-        debugger
+        
         if(nodes.length > 0){
 
             const newNodes = [];
@@ -91,7 +95,7 @@ export default class PathfindingVisuablizer extends Component {
         return (
             <>
                 <h1>Path Finder</h1>
-                <button onClick={() => this.dijkstraButton()}>Visualize Dijkstra's Algorithm</button>
+                <button onClick={() => this.visualize()}>Visualize Dijkstra's Algorithm</button>
                 <div className="grid-box">
             <div className="grid">
                 {nodes.map((row, idx) => {
