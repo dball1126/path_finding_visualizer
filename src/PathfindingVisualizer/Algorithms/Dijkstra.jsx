@@ -58,3 +58,13 @@ function updateVisitedNeighbors(node, nodes){
         }
     }
 }
+
+export const getNodesInShortestPath = (end) => {
+    const nodesInShortestPath = [];
+    let current = end;
+    while (current !== null){
+        nodesInShortestPath.unshift(current);
+        current = current.previous;
+    }
+    return nodesInShortestPath;
+}

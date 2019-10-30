@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Node from './Node/Node';
-import {dijkstra} from './Algorithms/Dijkstra';
+import {dijkstra, getNodesInShortestPath} from './Algorithms/Dijkstra';
 export default class PathfindingVisuablizer extends Component {
     constructor(props){
         super(props);
@@ -39,7 +39,34 @@ export default class PathfindingVisuablizer extends Component {
         const {nodes} = this.state;
         const start = nodes[10][10];
         const end = nodes[30][25];
-        dijkstra(nodes, start, end);
+        const visitedNodes = dijkstra(nodes, start, end);
+        const nodesInShortestPath = getNodesInShortestPath(end);
+        this.animate(visitedNodes, nodesInShortestPath);
+    }
+
+    animate(visited, nodesInShortestPath) {
+        for (let i = 0; i < visited.length; i++) {
+            if (i === visited.length) {
+
+                setTimeout(() => {
+                    this.shortestPath(nodesInShortestPath);
+                }, 10 * i);
+                return;            
+            }
+            setTimeout(() => {
+                const node = visited[i];
+                document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-visited';
+            }, 10 * i);
+        }
+    }
+
+    shortestPath(nodesInShortestPath){
+        for (let i = 0; i < nodesInShortestPath.length; i++) {
+            setTimeout(() => {
+                const node = nodesInShortestPath[i];
+                document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-shortest-path';
+            }, 50 * i);
+        }
     }
 
     getAllNodes(nodes) {
