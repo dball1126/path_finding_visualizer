@@ -96,6 +96,7 @@ export default class PathfindingVisuablizer extends Component {
             <>
                 <h1>Path Finder</h1>
                 <button onClick={() => this.visualize()}>Visualize Dijkstra's Algorithm</button>
+                <button onClick={() => window.location.reload()}>Reset</button>
                 <div className="grid-box">
             <div className="grid">
                 {nodes.map((row, idx) => {
