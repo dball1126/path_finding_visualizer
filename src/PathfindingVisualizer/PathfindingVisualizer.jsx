@@ -29,12 +29,7 @@ export default class PathfindingVisuablizer extends Component {
         this.setState({nodes})
     }
 
-    dijkstraButton(){
-        const {nodes} = this.state;
-        const start = nodes[10][10];
-        const end = nodes[30][25];
-        const visited = dijkstra(nodes, start, end);
-    }
+   
 
     visualize(){
         const {nodes} = this.state;
@@ -52,14 +47,14 @@ export default class PathfindingVisuablizer extends Component {
                 
                 setTimeout(() => {
                     this.shortestPath(nodesInShortestPath);
-                }, 10 * i);
+                }, 12 * i);
                 
                 return;            
             }
             setTimeout(() => {
                 const node = visited[i];
                 document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-visited';
-            }, 10 * i);
+            }, 12 * i);
         }
     }
 
@@ -69,7 +64,7 @@ export default class PathfindingVisuablizer extends Component {
             setTimeout(() => {
                 const node = nodesInShortestPath[i];
                 document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-shortest-path';
-            }, 50 * i);
+            }, 55 * i);
             
         }
     }

@@ -8,9 +8,9 @@ export default class Node extends Component {
     render(){
         
         const {start, end, row, col} = this.props;
-        let extraClass = start ? 'node-start' : end ? 'node-end' : ''
+        let classNameX = start ? 'node-start' : end ? 'node-end' : ''
         return (
-        <div className={`actual-node ${extraClass}`} id={`node-${row}-${col}`}>
+        <div className={`actual-node ${classNameX}`} id={`node-${row}-${col}`}>
            
         </div>)
     }

@@ -7,27 +7,22 @@ export const dijkstra = (nodes, start, end) => {
    while (unvisited.length > 0){
     sortNodesDistance(unvisited);
     
-        let closest = unvisited.shift();
-        
+        let closest = unvisited.shift(); 
         if (closest.distance === Infinity) return visited;
-        
         closest.visited = true;
         visited.push(closest);
-        
         if (closest.distance === end.distance) return visited;
-    
         updateVisitedNeighbors(closest, nodes);
     }
 }   
 
 function getAllNodes(grid) {
     const nodes = [];
-    for (const row of grid) {
-        for (const node of row) {
-            nodes.push(node);
+    for (let row = 0; row < grid.length; row++) {
+        for (let col = 0; col < grid[row].length; col++) {
+            nodes.push(grid[row][col]);
         }
     }
-    
     return nodes;
 }
 
@@ -49,13 +44,10 @@ function getUnvisitedNeighBors(node, nodes){
 
 function updateVisitedNeighbors(node, nodes){
     const unvisited = getUnvisitedNeighBors(node, nodes);
-    
     for (let i = 0; i < unvisited.length; i++) {
-            let ele = unvisited[i];
-            
-            ele.distance = node.distance + 1;
-            ele.previous = node;
-        
+            let neighbor = unvisited[i];
+            neighbor.distance = node.distance + 1;
+            neighbor.previous = node;
     }
 }
 
