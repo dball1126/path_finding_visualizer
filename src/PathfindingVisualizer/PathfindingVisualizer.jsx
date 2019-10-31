@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Node from './Node/Node';
 import {dijkstra, getNodesInShortestPath} from './Algorithms/Dijkstra';
 import {breadthFirstSearch} from './Algorithms/BreathFirstSearch';
-import {depthFirstSearch} from './Algorithms/DepthFirstSearch';
+import { depthFirstSearch} from './Algorithms/DepthFirstSearch';
 import { thisExpression } from '@babel/types';
 export default class PathfindingVisuablizer extends Component {
     constructor(props){
@@ -12,13 +12,13 @@ export default class PathfindingVisuablizer extends Component {
 
     componentDidMount(){
         const nodes = [];
-        for (let row = 0; row < 40; row++) {
+        for (let row = 0; row < 30; row++) {
            const currentRow = [];
            for (let col = 0; col < 30; col++) {
                const currentNode = {row, 
                                     col,
                                     start: row === 10 && col === 10,
-                                    end: row === 30 && col === 25,
+                                    end: row === 25 && col === 25,
                                     distance: Infinity,
                                     visited: false,
                                     previous: null}
@@ -37,14 +37,14 @@ export default class PathfindingVisuablizer extends Component {
     visualizeDijkstra(){
         const {nodes} = this.state;
         const start = nodes[10][10];
-        const end = nodes[30][25];
+        const end = nodes[25][25];
         const visitedNodes = dijkstra(nodes, start, end);
         const nodesInShortestPath = getNodesInShortestPath(end);
         this.animate(visitedNodes, nodesInShortestPath);
     }
 
     visualize(buttonClicked){
-        debugger
+        
 
         if (buttonClicked !== "" || buttonClicked !== undefined) {
 
@@ -52,25 +52,23 @@ export default class PathfindingVisuablizer extends Component {
         
         const { nodes } = this.state;
         const start = nodes[10][10];
-        const end = nodes[30][25];
+        const end = nodes[25][25];
         let visitedNodes = [];
-        debugger
-        if (buttonClicked === "dfs") visitedNodes = depthFirstSearch(nodes, start, end);
-        if (buttonClicked === "bfs") visitedNodes = breadthFirstSearch(nodes, start, end);
+        
+        if (buttonClicked === "dfs")      visitedNodes = depthFirstSearch(nodes, start, end);
+        if (buttonClicked === "bfs")      visitedNodes = breadthFirstSearch(nodes, start, end);
         if (buttonClicked === "dijkstra") visitedNodes = dijkstra(nodes, start, end);
-            debugger
+            
         const nodesInShortestPath = getNodesInShortestPath(end);
         
         this.animate(visitedNodes, nodesInShortestPath);
         }
 
     }
-    visualizeDepthFirstSearch(){
-
-    }
+    
 
     animate(visited, nodesInShortestPath) {
-        debugger
+        
         for (let i = 0; i < visited.length; i++) {
             if (i === visited.length-1) {
                 
@@ -89,7 +87,7 @@ export default class PathfindingVisuablizer extends Component {
 
     shortestPath(nodesInShortestPath){
         for (let i = 0; i < nodesInShortestPath.length; i++) {
-            debugger
+            
             setTimeout(() => {
                 const node = nodesInShortestPath[i];
                 document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-shortest-path';
@@ -103,7 +101,7 @@ export default class PathfindingVisuablizer extends Component {
         if(nodes.length > 0){
 
             const newNodes = [];
-            for (let row = 0; row < 40; row++) {
+            for (let row = 0; row < 30; row++) {
                 const currentRow = [];
                 for (let col = 0; col < 30; col++) {
                     newNodes.push(nodes[row][col]);
