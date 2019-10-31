@@ -1,21 +1,25 @@
-import { getAllNodes, getUnvisitedNeighBors} from './Dijkstra';
+import { getAllNodes, getUnvisitedNeighBors, sortNodesDistance} from './Dijkstra';
 
 export const breadthFirstSearch = (nodes, start, end) => {
-    let queue = [ start ];
+    let queue = [start];
     let unvisited = getAllNodes(nodes);
     if (!start || !end || start === end) return false;
     start.distance = 0;
+    let visited = [];
+    let nodeVisited = new Set(); // 
+    while (queue.length) {
 
-    while (unvisited.length > 0) {
         let closest = queue.shift();
-        
-        let closest = unvisited.shift();
+        if (nodeVisited.has(closest)) continue;
         if (closest.distance === Infinity) return visited;
         closest.visited = true;
         visited.push(closest);
+        closest.distance = 1;
+        nodeVisited.add(closest);
         if (closest.distance === end.distance) return visited;
         updateBreadthFirstSearchNeighbors(closest, nodes);
-
+        let neighbors = getUnvisitedNeighBors(closest, nodes);
+        queue.push(...neighbors);
     }
 }
 
