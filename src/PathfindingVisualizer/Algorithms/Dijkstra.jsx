@@ -16,7 +16,7 @@ export const dijkstra = (nodes, start, end) => {
     }
 }   
 
-function getAllNodes(grid) {
+export const getAllNodes = (grid) => {
     const nodes = [];
     for (let row = 0; row < grid.length; row++) {
         for (let col = 0; col < grid[row].length; col++) {
@@ -26,11 +26,11 @@ function getAllNodes(grid) {
     return nodes;
 }
 
-function sortNodesDistance(unvisited){
+export function sortNodesDistance(unvisited){
     return unvisited.sort((node1, node2) => node1.distance - node2.distance);
 }
 
-function getUnvisitedNeighBors(node, nodes){
+export function getUnvisitedNeighBors(node, nodes){
     const neighbors = [];
     const {row, col} = node;
 
@@ -42,7 +42,7 @@ function getUnvisitedNeighBors(node, nodes){
 
 }
 
-function updateVisitedNeighbors(node, nodes){
+export function updateVisitedNeighbors(node, nodes){
     const unvisited = getUnvisitedNeighBors(node, nodes);
     for (let i = 0; i < unvisited.length; i++) {
             let neighbor = unvisited[i];
