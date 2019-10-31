@@ -1,13 +1,16 @@
-export const breadthFirstSearch = (nodes, start, end) => {
+export const depthFirstSearch = (nodes, start, end) => {
+    debugger
     let queue = [start];
     if (!start || !end || start === end) return false;
     start.distance = 0;
     let visited = [];
     let nodeVisited = new Set();  
+    
     while (queue.length) {
 
         let closest = queue.shift();
         if (nodeVisited.has(closest)) continue;
+        debugger
         if (closest.distance === Infinity) return visited;
         closest.visited = true;
         visited.push(closest);
@@ -29,7 +32,7 @@ function updateDepthFirstSearchNeighbors(node, nodes) {
     }
 }
 
-function getUnvisitedDepthFirstNeighBors(){
+function getUnvisitedDepthFirstNeighBors(node, nodes){
     const neighbors = [];
     const { row, col } = node;
 

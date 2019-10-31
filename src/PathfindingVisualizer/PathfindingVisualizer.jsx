@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import Node from './Node/Node';
 import {dijkstra, getNodesInShortestPath} from './Algorithms/Dijkstra';
 import {breadthFirstSearch} from './Algorithms/BreathFirstSearch';
+import {depthFirstSearch} from './Algorithms/DepthFirstSearch';
+import { thisExpression } from '@babel/types';
 export default class PathfindingVisuablizer extends Component {
     constructor(props){
         super(props);
@@ -41,16 +43,34 @@ export default class PathfindingVisuablizer extends Component {
         this.animate(visitedNodes, nodesInShortestPath);
     }
 
-    visualizeBreadthFirstSearch(){
+    visualize(buttonClicked){
+        debugger
+
+        if (buttonClicked !== "" || buttonClicked !== undefined) {
+
+        console.log(buttonClicked);
+        
         const { nodes } = this.state;
         const start = nodes[10][10];
         const end = nodes[30][25];
-        const visitedNodes = breadthFirstSearch(nodes, start, end);
+        let visitedNodes = [];
+        debugger
+        if (buttonClicked === "dfs") visitedNodes = depthFirstSearch(nodes, start, end);
+        if (buttonClicked === "bfs") visitedNodes = breadthFirstSearch(nodes, start, end);
+        if (buttonClicked === "dijkstra") visitedNodes = dijkstra(nodes, start, end);
+            debugger
         const nodesInShortestPath = getNodesInShortestPath(end);
+        
         this.animate(visitedNodes, nodesInShortestPath);
+        }
+
+    }
+    visualizeDepthFirstSearch(){
+
     }
 
     animate(visited, nodesInShortestPath) {
+        debugger
         for (let i = 0; i < visited.length; i++) {
             if (i === visited.length-1) {
                 
@@ -69,7 +89,7 @@ export default class PathfindingVisuablizer extends Component {
 
     shortestPath(nodesInShortestPath){
         for (let i = 0; i < nodesInShortestPath.length; i++) {
-            
+            debugger
             setTimeout(() => {
                 const node = nodesInShortestPath[i];
                 document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-shortest-path';
@@ -100,8 +120,9 @@ export default class PathfindingVisuablizer extends Component {
         return (
             <>
                 <h1>Pathfinding Visualizer</h1>
-                <button onClick={() => this.visualizeDijkstra()}>Visualize Dijkstra's Algorithm</button>
-                <button onClick={() => this.visualizeBreadthFirstSearch()}>Visualize Breadth First Search</button>
+                <button onClick={() => this.visualize("dijkstra")}>Visualize Dijkstra's Algorithm</button>
+                <button onClick={() => this.visualize("bfs")}>Visualize Breadth First Search</button>
+                <button onClick={() => this.visualize("dfs")}>Visualize Depth First Search</button>
                 <button onClick={() => window.location.reload()}>Reset</button>
                 <div className="grid-box">
             <div className="grid">
