@@ -99,7 +99,7 @@ export default class PathfindingVisuablizer extends Component {
         console.log(this.getAllNodes(nodes));
         return (
             <>
-                <h1>Path Finder</h1>
+                <h1>Pathfinding Visualizer</h1>
                 <button onClick={() => this.visualizeDijkstra()}>Visualize Dijkstra's Algorithm</button>
                 <button onClick={() => this.visualizeBreadthFirstSearch()}>Visualize Breadth First Search</button>
                 <button onClick={() => window.location.reload()}>Reset</button>

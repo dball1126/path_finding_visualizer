@@ -1,8 +1,7 @@
-import { getAllNodes, getUnvisitedNeighBors, sortNodesDistance} from './Dijkstra';
+import { getUnvisitedNeighBors} from './Dijkstra';
 
 export const breadthFirstSearch = (nodes, start, end) => {
     let queue = [start];
-    let unvisited = getAllNodes(nodes);
     if (!start || !end || start === end) return false;
     start.distance = 0;
     let visited = [];
