@@ -118,10 +118,12 @@ export default class PathfindingVisuablizer extends Component {
         return (
             <>
                 <h1>Pathfinding Visualizer</h1>
+                <div className="button-box">
                 <button onClick={() => this.visualize("dijkstra")}>Visualize Dijkstra's Algorithm</button>
                 <button onClick={() => this.visualize("bfs")}>Visualize Breadth First Search</button>
                 <button onClick={() => this.visualize("dfs")}>Visualize Depth First Search</button>
                 <button onClick={() => window.location.reload()}>Reset</button>
+                </div>
                 <div className="grid-box">
             <div className="grid">
                 {nodes.map((row, idx) => {
