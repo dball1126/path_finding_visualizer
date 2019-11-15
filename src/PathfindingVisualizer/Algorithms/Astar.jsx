@@ -9,4 +9,4 @@
 // 4. next we choose one square from the open list and repeat the process above, but which one do we choose ?
 //  We must use the equation F = G + H  to figure out which  node to choose.
 //  G = the cost from moving from the node A to the current node we are on.
-//  
+//  H 
