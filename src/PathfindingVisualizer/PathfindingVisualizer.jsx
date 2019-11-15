@@ -1,14 +1,12 @@
-import React, {Component, useEffect, useRef, useState} from 'react';
+import React, {useEffect, useCallback, useState} from 'react';
 import Node from './Node/Node';
 import {dijkstra, getNodesInShortestPath} from './Algorithms/Dijkstra';
 import {breadthFirstSearch} from './Algorithms/BreathFirstSearch';
 import { depthFirstSearch} from './Algorithms/DepthFirstSearch';
-import { thisExpression } from '@babel/types';
 export default function PathfindingVisuablizer(){
     const [state, setState] = useState({ nodes: [] });
-    const [mounted, SetMounted] = useState(true);
-    const nodes = state.nodes;
-    
+    const nodes = React.useMemo(() => state.nodes, []);
+
     
     useEffect(() =>{
         for (let row = 0; row < 30; row++) {
@@ -79,21 +77,20 @@ export default function PathfindingVisuablizer(){
     
     
     
-    function visualizeDijkstra(){
-         const {nodes} = state;
-         const start = nodes[10][10];
-         const end = nodes[25][25];
-         const visitedNodes = dijkstra(nodes, start, end);
-         const nodesInShortestPath = getNodesInShortestPath(end);
-         animate(visitedNodes, nodesInShortestPath);
-     }
+    // function visualizeDijkstra(){
+    //      const {nodes} = state;
+    //      const start = nodes[10][10];
+    //      const end = nodes[25][25];
+    //      const visitedNodes = dijkstra(nodes, start, end);
+    //      const nodesInShortestPath = getNodesInShortestPath(end);
+    //      animate(visitedNodes, nodesInShortestPath);
+    //  }
     
     function visualize(buttonClicked){
          
     
          if (buttonClicked !== "" || buttonClicked !== undefined) {
     
-         console.log(buttonClicked);
          
          const { nodes } = state;
          const start = nodes[10][10];
@@ -108,8 +105,12 @@ export default function PathfindingVisuablizer(){
          
          animate(visitedNodes, nodesInShortestPath);
          }
-    
+         
+         setTimeout(() => { 
+            window.location.reload();
+                }, 15000)
      }
+    
      
     
     function animate(visited, nodesInShortestPath) {
@@ -128,6 +129,7 @@ export default function PathfindingVisuablizer(){
                  document.getElementById(`node-${node.row}-${node.col}`).className = 'node node-visited';
              }, 12 * i);
          }
+         
      }
     
     function shortestPath(nodesInShortestPath){
@@ -141,19 +143,19 @@ export default function PathfindingVisuablizer(){
          }
      }
     
-    function getAllNodes(nodes) {
+    // function getAllNodes(nodes) {
          
-         if(nodes.length > 0){
+    //      if(nodes.length > 0){
     
-             const newNodes = [];
-             for (let row = 0; row < 30; row++) {
-                 const currentRow = [];
-                 for (let col = 0; col < 30; col++) {
-                     newNodes.push(nodes[row][col]);
-                 }
-             }
-             return nodes;
-         }
-    }
+    //          const newNodes = [];
+    //          for (let row = 0; row < 30; row++) {
+    //              const currentRow = [];
+    //              for (let col = 0; col < 30; col++) {
+    //                  newNodes.push(nodes[row][col]);
+    //              }
+    //          }
+    //          return nodes;
+    //      }
+    // }
 }
 
