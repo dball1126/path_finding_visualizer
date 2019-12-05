@@ -1,5 +1,6 @@
-import React, {useEffect, useCallback, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Node from './Node/Node';
+import {aStar } from './Algorithms/Astar';
 import {dijkstra, getNodesInShortestPath} from './Algorithms/Dijkstra';
 import {breadthFirstSearch} from './Algorithms/BreathFirstSearch';
 import { depthFirstSearch} from './Algorithms/DepthFirstSearch';
@@ -19,7 +20,9 @@ export default function PathfindingVisuablizer(){
                     end: row === 25 && col === 25,
                     distance: Infinity,
                     visited: false,
-                    previous: null
+                    previous: null,
+                    heuristic: 0,
+                    fScore: 0
                 }
     
                 currentRow.push(currentNode)
@@ -97,6 +100,7 @@ export default function PathfindingVisuablizer(){
          const end = nodes[25][25];
          let visitedNodes = [];
          
+         if (buttonClicked === "astar")    visitedNodes = aStar(nodes, start, end);
          if (buttonClicked === "dfs")      visitedNodes = depthFirstSearch(nodes, start, end);
          if (buttonClicked === "bfs")      visitedNodes = breadthFirstSearch(nodes, start, end);
          if (buttonClicked === "dijkstra") visitedNodes = dijkstra(nodes, start, end);
