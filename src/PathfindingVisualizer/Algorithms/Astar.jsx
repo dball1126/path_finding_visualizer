@@ -21,7 +21,7 @@ export const aStar = (nodes, start, end) => {
     }
 }   
 
-const sortNodesFscore = (unvisited) => { // Update Fscore before sort..needed especially for for time.
+const sortNodesFscore = (unvisited) => { // Update Fscore before sort..needed especially for the first time.
     updateFscore(unvisited);
     return unvisited.sort((node1, node2) => (node1.fScore - node2.fScore));  
 }

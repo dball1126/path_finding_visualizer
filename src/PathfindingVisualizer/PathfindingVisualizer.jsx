@@ -4,11 +4,11 @@ import {aStar } from './Algorithms/Astar';
 import {dijkstra, getNodesInShortestPath} from './Algorithms/Dijkstra';
 import {breadthFirstSearch} from './Algorithms/BreathFirstSearch';
 import { depthFirstSearch} from './Algorithms/DepthFirstSearch';
+
 export default function PathfindingVisuablizer(){
     const [state, setState] = useState({ nodes: [] });
     const nodes = React.useMemo(() => state.nodes, []);
 
-    
     useEffect(() =>{
         for (let row = 0; row < 30; row++) {
             const currentRow = [];
@@ -35,12 +35,8 @@ export default function PathfindingVisuablizer(){
                 
                 return { ...prevState, ...nodes }
             });
-        }, [])
+    }, []);
        
-     
-
-
-        
     return (
         <>
             <h1>Pathfinding Visualizer</h1>
@@ -75,26 +71,11 @@ export default function PathfindingVisuablizer(){
             </div>
         </>
     )
-
-   
-    
-    
-    
-    // function visualizeDijkstra(){
-    //      const {nodes} = state;
-    //      const start = nodes[10][10];
-    //      const end = nodes[25][25];
-    //      const visitedNodes = dijkstra(nodes, start, end);
-    //      const nodesInShortestPath = getNodesInShortestPath(end);
-    //      animate(visitedNodes, nodesInShortestPath);
-    //  }
     
     function visualize(buttonClicked){
          
-    
          if (buttonClicked !== "" || buttonClicked !== undefined) {
     
-         
          const { nodes } = state;
          const start = nodes[10][10];
          const end = nodes[25][25];
@@ -110,12 +91,8 @@ export default function PathfindingVisuablizer(){
          animate(visitedNodes, nodesInShortestPath);
          }
          
-         setTimeout(() => { 
-            window.location.reload();
-                }, 15000)
+         setTimeout(() => { window.location.reload() }, 15000);    
      }
-    
-     
     
     function animate(visited, nodesInShortestPath) {
          
@@ -146,20 +123,4 @@ export default function PathfindingVisuablizer(){
              
          }
      }
-    
-    // function getAllNodes(nodes) {
-         
-    //      if(nodes.length > 0){
-    
-    //          const newNodes = [];
-    //          for (let row = 0; row < 30; row++) {
-    //              const currentRow = [];
-    //              for (let col = 0; col < 30; col++) {
-    //                  newNodes.push(nodes[row][col]);
-    //              }
-    //          }
-    //          return nodes;
-    //      }
-    // }
 }
-
