@@ -12,8 +12,6 @@
 //  H = the estimated movement cost to move from that given square on the grid to the final destination...point B
 //      its called the Heuristic because it's a guess. We calculate it by repeatedly going through the open list and 
 //      choosing the square with the lowest F score
-
-
 export const aStar = (nodes, start, end) => {
     const visited = [];
     let unvisited = getAllNodes(nodes);
@@ -21,8 +19,7 @@ export const aStar = (nodes, start, end) => {
 
     if (!start || !end || start === end) return false;
     start.distance = 0;
-    console.log(unvisited);
-    debugger
+    
    while (unvisited.length > 0){
     sortNodesDistance(unvisited);
     
@@ -32,6 +29,8 @@ export const aStar = (nodes, start, end) => {
         visited.push(closest);
         if (closest.distance === end.distance) return visited;
         updateVisitedNeighbors(closest, nodes);
+        // updateFscore(unvisited);
+        
     }
 }   
 
@@ -46,7 +45,9 @@ export const getAllNodes = (grid) => {
 }
 
 export function sortNodesDistance(unvisited){
-    return unvisited.sort((node1, node2) => node1.distance - node2.distance);
+    unvisited = unvisited.sort((node1, node2) => ((node1.distance + node1.heuristic) - (node2.distance + node2.heuristic)));
+     
+     return unvisited
 }
 
 export function getUnvisitedNeighBors(node, nodes){
@@ -67,6 +68,7 @@ export function updateVisitedNeighbors(node, nodes){
             let neighbor = unvisited[i];
             neighbor.distance = node.distance + 1;
             neighbor.previous = node;
+            // neighbor.fScore = neighbor.distance + neighbor.heuristic
     }
 }
 
@@ -79,6 +81,14 @@ export const getNodesInShortestPath = (end) => {
     }
     return nodesInShortestPath;
 }
+
+// const updateFscore = (nodes) => { // F = G + H
+//     nodes.forEach(node => { 
+        
+//         node.fScore = node.distance + node.heuristic })
+    
+//     return nodes 
+// }
 
 const set_heuristics = (nodes, end) => {
     nodes.forEach(node => {
