@@ -16,10 +16,13 @@
 
 export const aStar = (nodes, start, end) => {
     const visited = [];
-    const unvisited = getAllNodes(nodes);
+    let unvisited = getAllNodes(nodes);
+        unvisited = set_heuristics(unvisited, end);
+
     if (!start || !end || start === end) return false;
     start.distance = 0;
     console.log(unvisited);
+    debugger
    while (unvisited.length > 0){
     sortNodesDistance(unvisited);
     
@@ -75,4 +78,11 @@ export const getNodesInShortestPath = (end) => {
         current = current.previous;
     }
     return nodesInShortestPath;
+}
+
+const set_heuristics = (nodes, end) => {
+    nodes.forEach(node => {
+        node.heuristic = Math.abs((node.row - end.row) + (node.col - end.col)) * 5
+    })
+    return nodes
 }
