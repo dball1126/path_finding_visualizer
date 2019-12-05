@@ -43,9 +43,11 @@ export const getAllNodes = (grid) => {
     }
     return nodes;
 }
-
+//(node1.distance + node1.heuristic) - (node2.distance + node2.heuristic))
 export function sortNodesDistance(unvisited){
-    unvisited = unvisited.sort((node1, node2) => ((node1.distance + node1.heuristic) - (node2.distance + node2.heuristic)));
+    
+    unvisited = updateFscore(unvisited);
+    unvisited = unvisited.sort((node1, node2) => (node1.fScore - node2.fScore));
      
      return unvisited
 }
@@ -68,7 +70,6 @@ export function updateVisitedNeighbors(node, nodes){
             let neighbor = unvisited[i];
             neighbor.distance = node.distance + 1;
             neighbor.previous = node;
-            // neighbor.fScore = neighbor.distance + neighbor.heuristic
     }
 }
 
@@ -82,17 +83,18 @@ export const getNodesInShortestPath = (end) => {
     return nodesInShortestPath;
 }
 
-// const updateFscore = (nodes) => { // F = G + H
-//     nodes.forEach(node => { 
+const updateFscore = (nodes) => { // F = G + H
+    nodes.forEach(node => { 
         
-//         node.fScore = node.distance + node.heuristic })
+        node.fScore = node.distance + node.heuristic })
     
-//     return nodes 
-// }
+    return nodes 
+}
 
 const set_heuristics = (nodes, end) => {
     nodes.forEach(node => {
-        node.heuristic = Math.abs((node.row - end.row) + (node.col - end.col)) * 5
+        node.heuristic = (Math.abs(node.row - end.row) + Math.abs(node.col - end.col)) * 5
     })
+
     return nodes
 }
