@@ -31,7 +31,7 @@ const updateFscore = (nodes) => { // F = (G = distance) + (H = Heuristic)
     return nodes;
 }
 
-const setHeuristics = (nodes, end) => { // Set Initial heuristics.
+export const setHeuristics = (nodes, end) => { // Set Initial heuristics.
     nodes.forEach(node => {
         node.heuristic = (Math.abs(node.row - end.row) + Math.abs(node.col - end.col)) * 5;
     })

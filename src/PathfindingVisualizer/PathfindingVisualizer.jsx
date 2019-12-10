@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import Node from './Node/Node';
 import {aStar } from './Algorithms/Astar';
+import {greedy } from './Algorithms/Greedy';
 import {dijkstra, getNodesInShortestPath} from './Algorithms/Dijkstra';
 import {breadthFirstSearch} from './Algorithms/BreathFirstSearch';
 import { depthFirstSearch} from './Algorithms/DepthFirstSearch';
@@ -45,6 +46,7 @@ export default function PathfindingVisuablizer(){
                 <button onClick={() => visualize("bfs")}>Visualize Breadth First Search</button>
                 <button onClick={() => visualize("dfs")}>Visualize Depth First Search</button>
                 <button onClick={() => visualize("astar")}>Visualize A* Search</button>
+                <button onClick={() => visualize("greedy")}>Visualize Greedy Search</button>
                 <button onClick={() => window.location.reload()}>Reset</button>
             </div>
             <div className="grid-box">
@@ -82,6 +84,7 @@ export default function PathfindingVisuablizer(){
          let visitedNodes = [];
          
          if (buttonClicked === "astar")    visitedNodes = aStar(nodes, start, end);
+         if (buttonClicked === "greedy")    visitedNodes = greedy(nodes, start, end);
          if (buttonClicked === "dfs")      visitedNodes = depthFirstSearch(nodes, start, end);
          if (buttonClicked === "bfs")      visitedNodes = breadthFirstSearch(nodes, start, end);
          if (buttonClicked === "dijkstra") visitedNodes = dijkstra(nodes, start, end);
