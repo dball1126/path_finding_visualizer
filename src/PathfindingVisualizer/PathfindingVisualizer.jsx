@@ -44,6 +44,15 @@ export default function PathfindingVisuablizer(){
             nodes[19][15].wall = true
             nodes[20][15].wall = true
             nodes[10][15].wall = true
+            nodes[15][0].wall = true
+            nodes[16][0].wall = true
+            nodes[17][0].wall = true
+            nodes[17][1].wall = true
+            nodes[18][0].wall = true
+            nodes[19][1].wall = true
+            nodes[18][1].wall = true
+            nodes[19][2].wall = true
+            nodes[18][2].wall = true
         
             setState(prevState => {
                 

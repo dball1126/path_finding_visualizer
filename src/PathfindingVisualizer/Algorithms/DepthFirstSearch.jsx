@@ -1,4 +1,3 @@
-import {updateNodeWalls} from './Dijkstra';
 
 export const depthFirstSearch = (nodes, start, end) => {
     
@@ -6,6 +5,8 @@ export const depthFirstSearch = (nodes, start, end) => {
     start.distance = 0;
     let visited = [];
     let nodeVisited = new Set();  
+    nodes = updateNodeWalls(nodes)
+    
     debugger
     const depthFirstOrder = depthFirstSearchOrder(start, nodes); 
     depthFirstOrder[0].distance = 0;
@@ -31,23 +32,24 @@ function depthFirstSearchOrder(node, nodes) { //puts nodes in the actual order f
     let { row, col } = node;
 
     const nodeTracker = new Set();
-    while (neighbors.length < nodes.length * nodes[0].length){
-
-        if (col > 0 && neighbors.length <= nodes.length * nodes[0].length && !nodeTracker.has(nodes[row][col - 1])) {
+    for (let c = 0; c < nodes.length; c++) {
+        for (let r = 0; r < nodes[c].length; r++) {        
+            
+        if (col > 0 && neighbors.length <= nodes.length * nodes[c].length && !nodeTracker.has(nodes[row][col - 1]) && !nodes[row][col-1].wall) {
             if (nodes[row][col - 1] ) { // up
 
             nodeTracker.add(nodes[row][col - 1])
             neighbors.push(nodes[row][col - 1])
             col = col -1
         }
-        } else if (row < nodes.length - 1 && neighbors.length <= nodes.length * nodes[0].length && !nodeTracker.has(nodes[row + 1][col])) {
+        } else if (row < nodes.length - 1 && neighbors.length <= nodes.length * nodes[c].length && !nodeTracker.has(nodes[row + 1][col]) && !nodes[row+1][col].wall) {
             if (nodes[row + 1][col] ) { // right
 
             nodeTracker.add(nodes[row + 1][col])
             neighbors.push(nodes[row + 1][col])
             row = row + 1
         }
-        } else if (col < nodes.length - 1 && neighbors.length <= nodes.length * nodes[0].length && !nodeTracker.has(nodes[row][col + 1])) {
+        } else if (col < nodes.length - 1 && neighbors.length <= nodes.length * nodes[c].length && !nodeTracker.has(nodes[row][col + 1]) && !nodes[row][col+1].wall) {
         
             if (nodes[row][col + 1] ) { // down
 
@@ -55,7 +57,7 @@ function depthFirstSearchOrder(node, nodes) { //puts nodes in the actual order f
             neighbors.push(nodes[row][col + 1])
             col = col + 1
         }
-        } else if (row > 0 && neighbors.length <= nodes.length * nodes[0].length && !nodeTracker.has(nodes[row - 1][col])) {
+        } else if (row > 0 && neighbors.length <= nodes.length * nodes[c].length && !nodeTracker.has(nodes[row - 1][col]) && !nodes[row-1][col].wall) {
             if (nodes[row - 1][col] ) { // left
 
             nodeTracker.add(nodes[row - 1][col])
@@ -63,6 +65,8 @@ function depthFirstSearchOrder(node, nodes) { //puts nodes in the actual order f
             row = row -1
         }
     }
+    }
+    
 }
 return neighbors;
 }
@@ -71,4 +75,15 @@ function updateNeighbor(node, nodes){ // updates our neighbors distance to just 
     let neighbor = nodes[0];
     neighbor.distance = 1;
     neighbor.previous = node;
+}
+
+function updateNodeWalls(nodes){
+    for (let i = 0; i < nodes.length; i++) {
+        for (let j = 0; j < nodes[0].length; j++) {
+            if (nodes[i][j].wall){
+                nodes[i][j].visited = true;
+            }
+        }
+    }  
+    return nodes;
 }
