@@ -23,7 +23,8 @@ export default function PathfindingVisuablizer(){
                     visited: false,
                     previous: null,
                     heuristic: 0,
-                    fScore: 0
+                    fScore: 0,
+                    wall: false
                 }
     
                 currentRow.push(currentNode)
@@ -31,6 +32,17 @@ export default function PathfindingVisuablizer(){
     
             nodes.push(currentRow)
         }
+            nodes[14][15].wall = true
+            nodes[13][15].wall = true
+            nodes[12][15].wall = true
+            nodes[11][15].wall = true
+            nodes[15][15].wall = true
+            nodes[16][15].wall = true
+            nodes[17][15].wall = true
+            nodes[18][15].wall = true
+            nodes[19][15].wall = true
+            nodes[20][15].wall = true
+            nodes[10][15].wall = true
         
             setState(prevState => {
                 
@@ -56,12 +68,13 @@ export default function PathfindingVisuablizer(){
                         return (
                             <div className="nodes" key={idx}>
                                 {row.map((node, nodeIdx) => {
-                                    const { row, col, start, end } = node;
+                                    const { row, col, start, end, wall } = node;
                                     return <Node key={nodeIdx}
                                         row={row}
                                         col={col}
                                         start={start}
                                         end={end}
+                                        wall={wall}
                                     />
                                 })
                                 }
@@ -81,6 +94,9 @@ export default function PathfindingVisuablizer(){
          const { nodes } = state;
          const start = nodes[10][10];
          const end = nodes[25][25];
+         
+            
+
          let visitedNodes = [];
          
          if (buttonClicked === "astar")    visitedNodes = aStar(nodes, start, end);
@@ -114,6 +130,23 @@ export default function PathfindingVisuablizer(){
              }, 12 * i);
          }
          
+     }
+
+     function wall(nodes){
+         
+         for (let row = 0; row < nodes.length; row++) {
+             for (let col = 0; col < nodes[0].length; col++) {
+                 const node = nodes[row][col];
+                 
+                      
+                    if (node.wall) {
+                        
+                        document.getElementById(`node-${node.row}-${node.col}`).className = 'wall';
+                    }
+                    
+                 
+                }
+         }
      }
     
     function shortestPath(nodesInShortestPath){
