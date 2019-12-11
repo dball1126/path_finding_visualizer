@@ -37,6 +37,7 @@ export function sortNodesDistance(unvisited){
 export function getUnvisitedNeighBors(node, nodes){
     const neighbors = [];
     const {row, col} = node;
+    
     // Commented out code is for adding all neighbors diagonally
     if (row > 0) neighbors.push(nodes[row - 1][col]);
     if (row < nodes.length - 1) neighbors.push(nodes[row + 1][col]);

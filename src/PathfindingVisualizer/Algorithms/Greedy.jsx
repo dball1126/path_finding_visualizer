@@ -7,7 +7,7 @@ export const greedy = (nodes, start, end) => {
     let unvisited = getAllNodes(nodes);
           setHeuristics(unvisited, end);
           unvisited = updateNodeWalls(unvisited);
-          debugger
+          
     
     if (!start || !end || start === end) return false;
     start.distance = 0;
