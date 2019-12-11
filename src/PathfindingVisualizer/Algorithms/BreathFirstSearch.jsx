@@ -26,10 +26,10 @@ export const breadthFirstSearch = (nodes, start, end) => {
 }
 
 function updateBreadthFirstSearchNeighbors(node, nodes) {
-    let unvisited = getUnvisitedNeighBors(node, nodes);
+    let unvisited = getUnvisitedNeighBors(node, nodes, 0); // Weight of zero for BFS
     for (let i = 0; i < unvisited.length; i++) {
         let neighbor = unvisited[i];
-        neighbor.distance = node.distance = 1;
+        neighbor.distance = node.distance = 0;  // Weight of zero for BFS
         neighbor.previous = node;
     }
 }

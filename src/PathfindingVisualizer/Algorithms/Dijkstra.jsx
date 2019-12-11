@@ -51,11 +51,13 @@ export function getUnvisitedNeighBors(node, nodes){
 
 }
 
-export function updateVisitedNeighbors(node, nodes){
+export function updateVisitedNeighbors(node, nodes, weight){
+    if (!weight) weight = 1;
+    
     const unvisited = getUnvisitedNeighBors(node, nodes);
     for (let i = 0; i < unvisited.length; i++) {
             let neighbor = unvisited[i];
-            neighbor.distance = node.distance + 1;
+            neighbor.distance = node.distance + weight;
             neighbor.previous = node;
     }
 }

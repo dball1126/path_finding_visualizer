@@ -11,6 +11,7 @@ export const greedy = (nodes, start, end) => {
     
     if (!start || !end || start === end) return false;
     start.distance = 0;
+    start.heuristic = 0;
     
    while (unvisited.length > 0){
         sortNodesGreedy(unvisited);
@@ -21,7 +22,7 @@ export const greedy = (nodes, start, end) => {
         visited.push(closest);
         if (closest.distance === end.distance) return visited;
 
-        updateVisitedNeighbors(closest, nodes);        
+        updateVisitedNeighbors(closest, nodes, 0);   // Pass weight of 0 since greedy only goes by heuristics     
     }
 }
 

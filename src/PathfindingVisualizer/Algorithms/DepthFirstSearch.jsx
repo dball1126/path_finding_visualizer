@@ -7,7 +7,7 @@ export const depthFirstSearch = (nodes, start, end) => {
     let nodeVisited = new Set();  
     nodes = updateNodeWalls(nodes)
     
-    debugger
+    
     const depthFirstOrder = depthFirstSearchOrder(start, nodes); 
     depthFirstOrder[0].distance = 0;
     
