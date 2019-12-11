@@ -64,12 +64,12 @@ export default function PathfindingVisuablizer(){
         <>
             <h1>Pathfinding Visualizer</h1>
             <div className="button-box">
-                <button onClick={() => visualize("dijkstra")}>Visualize Dijkstra's Algorithm</button>
-                <button onClick={() => visualize("bfs")}>Visualize Breadth First Search</button>
-                <button onClick={() => visualize("dfs")}>Visualize Depth First Search</button>
-                <button onClick={() => visualize("astar")}>Visualize A* Search</button>
-                <button onClick={() => visualize("greedy")}>Visualize Greedy Search</button>
-                <button onClick={() => window.location.reload()}>Reset</button>
+                <button className="button" onClick={() => visualize("dijkstra")}>Visualize Dijkstra's Algorithm</button>
+                <button className="button" onClick={() => visualize("bfs")}>Visualize Breadth First Search</button>
+                <button className="button" onClick={() => visualize("dfs")}>Visualize Depth First Search</button>
+                <button className="button" onClick={() => visualize("astar")}>Visualize A* Search</button>
+                <button className="button" onClick={() => visualize("greedy")}>Visualize Greedy Search</button>
+                <button className="button" onClick={() => window.location.reload()}>Reset</button>
             </div>
             <div className="grid-box">
                 <div className="grid">
