@@ -1,9 +1,12 @@
+import {updateNodeWalls} from './Dijkstra';
+
 export const depthFirstSearch = (nodes, start, end) => {
     
     if (!start || !end || start === end) return false;
     start.distance = 0;
     let visited = [];
     let nodeVisited = new Set();  
+    debugger
     const depthFirstOrder = depthFirstSearchOrder(start, nodes); 
     depthFirstOrder[0].distance = 0;
     

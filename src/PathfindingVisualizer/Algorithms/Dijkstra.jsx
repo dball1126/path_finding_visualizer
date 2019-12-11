@@ -2,7 +2,7 @@ export const dijkstra = (nodes, start, end) => {
     let visited = [];
     let unvisited = getAllNodes(nodes);
     
-    unvisited = updateNodeWalls(unvisited);
+        unvisited = updateNodeWalls(unvisited);
     
     
     if (!start || !end || start === end) return false;

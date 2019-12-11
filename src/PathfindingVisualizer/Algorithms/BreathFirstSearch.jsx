@@ -1,4 +1,4 @@
-import { getUnvisitedNeighBors} from './Dijkstra';
+import { getUnvisitedNeighBors, updateNodeWalls} from './Dijkstra';
 
 export const breadthFirstSearch = (nodes, start, end) => {
     let queue = [start];

@@ -1,12 +1,14 @@
 import {setHeuristics} from './Astar';
-import {getAllNodes, updateVisitedNeighbors} from './Dijkstra';
+import {getAllNodes, updateVisitedNeighbors, updateNodeWalls} from './Dijkstra';
 
 
 export const greedy = (nodes, start, end) => {
     const visited = [];
-    const unvisited = getAllNodes(nodes);
+    let unvisited = getAllNodes(nodes);
           setHeuristics(unvisited, end);
-
+          unvisited = updateNodeWalls(unvisited);
+          debugger
+    
     if (!start || !end || start === end) return false;
     start.distance = 0;
     
