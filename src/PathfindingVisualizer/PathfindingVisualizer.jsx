@@ -33,26 +33,26 @@ export default function PathfindingVisuablizer(){
             nodes.push(currentRow)
         }
             // WALLS
-            nodes[14][15].wall = true
-            nodes[13][15].wall = true
-            nodes[12][15].wall = true
-            nodes[11][15].wall = true
-            nodes[15][15].wall = true
-            nodes[16][15].wall = true
-            nodes[17][15].wall = true
-            nodes[18][15].wall = true
-            nodes[19][15].wall = true
-            nodes[20][15].wall = true
-            nodes[10][15].wall = true
-            nodes[15][0].wall = true
-            nodes[16][0].wall = true
-            nodes[17][0].wall = true
-            nodes[17][1].wall = true
-            nodes[18][0].wall = true
-            nodes[19][1].wall = true
-            nodes[18][1].wall = true
-            nodes[19][2].wall = true
-            nodes[18][2].wall = true
+            nodes[14][15].wall = true;
+            nodes[13][15].wall = true;
+            nodes[12][15].wall = true;
+            nodes[11][15].wall = true;
+            nodes[15][15].wall = true;
+            nodes[16][15].wall = true;
+            nodes[17][15].wall = true;
+            nodes[18][15].wall = true;
+            nodes[19][15].wall = true;
+            nodes[20][15].wall = true;
+            nodes[10][15].wall = true;
+            nodes[15][0].wall = true;
+            nodes[16][0].wall = true;
+            nodes[17][0].wall = true;
+            nodes[17][1].wall = true;
+            nodes[18][0].wall = true;
+            nodes[19][1].wall = true;
+            nodes[18][1].wall = true;
+            nodes[19][2].wall = true;
+            nodes[18][2].wall = true;
         
             setState(prevState => {
                 

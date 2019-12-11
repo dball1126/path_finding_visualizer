@@ -34,7 +34,7 @@ function updateBreadthFirstSearchNeighbors(node, nodes) {
     }
 }
 
-function updateNodeWalls(nodes) { // Separate function needed for BFS due to how it was coded
+export const updateNodeWalls = (nodes) => { // Separate function needed for BFS due to how it was coded
     for (let i = 0; i < nodes.length; i++) {
         for (let j = 0; j < nodes[0].length; j++) {
             if (nodes[i][j].wall){

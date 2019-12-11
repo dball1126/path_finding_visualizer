@@ -1,4 +1,4 @@
-
+import {updateNodeWalls} from './BreathFirstSearch';
 export const depthFirstSearch = (nodes, start, end) => {
     
     if (!start || !end || start === end) return false;
@@ -75,15 +75,4 @@ function updateNeighbor(node, nodes){ // updates our neighbors distance to just 
     let neighbor = nodes[0];
     neighbor.distance = 1;
     neighbor.previous = node;
-}
-
-function updateNodeWalls(nodes){
-    for (let i = 0; i < nodes.length; i++) {
-        for (let j = 0; j < nodes[0].length; j++) {
-            if (nodes[i][j].wall){
-                nodes[i][j].visited = true;
-            }
-        }
-    }  
-    return nodes;
 }
