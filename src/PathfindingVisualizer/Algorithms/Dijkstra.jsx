@@ -1,9 +1,13 @@
 export const dijkstra = (nodes, start, end) => {
-    const visited = [];
-    const unvisited = getAllNodes(nodes);
+    let visited = [];
+    let unvisited = getAllNodes(nodes);
+    
+    unvisited = updateNodeWalls(unvisited);
+    
+    
     if (!start || !end || start === end) return false;
     start.distance = 0;
-
+    
    while (unvisited.length > 0){
     sortNodesDistance(unvisited);
     
@@ -63,4 +67,8 @@ export const getNodesInShortestPath = (end) => {
         current = current.previous;
     }
     return nodesInShortestPath;
+}
+
+export const updateNodeWalls = (unvisited) => { // mark walls visisted
+   return unvisited = unvisited.filter(node => !node.wall);
 }

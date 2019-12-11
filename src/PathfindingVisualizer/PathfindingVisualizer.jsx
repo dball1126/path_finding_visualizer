@@ -32,6 +32,7 @@ export default function PathfindingVisuablizer(){
     
             nodes.push(currentRow)
         }
+            // WALLS
             nodes[14][15].wall = true
             nodes[13][15].wall = true
             nodes[12][15].wall = true
@@ -130,23 +131,6 @@ export default function PathfindingVisuablizer(){
              }, 12 * i);
          }
          
-     }
-
-     function wall(nodes){
-         
-         for (let row = 0; row < nodes.length; row++) {
-             for (let col = 0; col < nodes[0].length; col++) {
-                 const node = nodes[row][col];
-                 
-                      
-                    if (node.wall) {
-                        
-                        document.getElementById(`node-${node.row}-${node.col}`).className = 'wall';
-                    }
-                    
-                 
-                }
-         }
      }
     
     function shortestPath(nodesInShortestPath){
