@@ -73,6 +73,6 @@ return neighbors;
 
 function updateNeighbor(node, nodes){ // updates our neighbors distance to just 1 since it is unweighted
     let neighbor = nodes[0];
-    neighbor.distance = 1;
+    neighbor.distance = 0;
     neighbor.previous = node;
 }
